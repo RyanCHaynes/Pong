@@ -4,7 +4,9 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import dev.GameDevPractice.Pong.Display.Display;
+import dev.GameDevPractice.Pong.EntityManager.EntityManager;
 import dev.GameDevPractice.Pong.GFX.Assets;
+import dev.GameDevPractice.Pong.Input.KeyManager;
 import dev.GameDevPractice.Pong.State.GameState;
 import dev.GameDevPractice.Pong.State.State;
 
@@ -17,6 +19,9 @@ public class Game implements Runnable{
 		private String title;
 		private int width, height;
 		private State GameState;
+		private KeyManager x;
+		private EntityManager entityManager;
+		private long DeltaTime;
 		
 		Game(String t, int w, int h){
 			title = t;
@@ -46,9 +51,11 @@ public class Game implements Runnable{
 		}
 		
 		private void init(){
+			entityManager = new EntityManager();
 			Assets.init();
 			display = new Display(title, width, height);
 			GameState = new GameState(this);
+			display.getFrame().addKeyListener(x = new KeyManager());
 			State.setState(GameState);
 		}
 		
@@ -94,5 +101,11 @@ public class Game implements Runnable{
 			
 			
 			stop();
+		}
+		public EntityManager getEntityM(){
+			return this.entityManager;
+		}
+		public Graphics getGraphics(){
+			return this.g;
 		}
 }
