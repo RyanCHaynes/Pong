@@ -22,6 +22,7 @@ public class Display {
 	private void init(){
 		frame = new JFrame(title);
 		frame.setSize(d = new Dimension(width, height));
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.setMaximumSize(d);
 		frame.setResizable(false);
