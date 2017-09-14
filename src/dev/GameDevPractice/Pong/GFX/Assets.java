@@ -12,7 +12,7 @@ public class Assets {
 	public static HashMap<String, ArrayList<BufferedImage>> AnimationMap = new HashMap<String, ArrayList<BufferedImage>>(); //stores all animation via hashMap, animate objects will refer to this in their render methods by looking up a string and frame
 	public static void init(){
 		SpriteSheets.add(new SpriteSheet(32,32,"PongBallXD",1,1)); //x, y, name, frames, scale
-		SpriteSheets.add(new SpriteSheet(32,32,"PongPaddleB",1,1)); //x, y, name, frames, scale
+		SpriteSheets.add(new SpriteSheet(32,32,"PongPaddleB",1,2)); //x, y, name, frames, scale
 		loadSpriteSheets();
 		loadAnimationMap();
 	}
