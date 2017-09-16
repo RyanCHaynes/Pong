@@ -19,7 +19,7 @@ public class Game implements Runnable{
 		private String title;
 		private int width, height;
 		private State GameState;
-		private KeyManager x;
+		private KeyManager keyManager;
 		private EntityManager entityManager;
 		private long DeltaTime;
 		
@@ -55,7 +55,7 @@ public class Game implements Runnable{
 			Assets.init();
 			display = new Display(title, width, height);
 			GameState = new GameState(this);
-			display.getFrame().addKeyListener(x = new KeyManager());
+			display.getFrame().addKeyListener(keyManager = new KeyManager());
 			State.setState(GameState);
 		}
 		
@@ -104,6 +104,9 @@ public class Game implements Runnable{
 		}
 		public EntityManager getEntityM(){
 			return this.entityManager;
+		}
+		public KeyManager getKeyM(){
+			return this.keyManager;
 		}
 		public Graphics getGraphics(){
 			return this.g;

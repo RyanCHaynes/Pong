@@ -22,6 +22,17 @@ public class EntityManager {
 			throw new IllegalArgumentException("There is already an EntityManager");
 		}
 	}
+	
+	public <T extends Component> List<Integer> getAllEntititiesWithComponentType(Class<T> componentType){
+		HashMap<Integer, ? extends Component> store = componentStores.get(componentType);
+		if (store == null){
+			return new LinkedList<Integer>();
+		}
+		else{
+			List<Integer> result = new ArrayList<Integer>((java.util.Collection<Integer>)store.keySet());
+			return result;}
+	}
+	
 	public <T extends Component> T getComponent(int entity, Class<T> componentType){
 		HashMap<Integer, ? extends Component> store = componentStores.get(componentType);
 		if(store == null)
